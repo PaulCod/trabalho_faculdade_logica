@@ -1,4 +1,4 @@
-
+# Variavel global
 # Dados dos produtos oferecidos
 dadosProdutos = {
     "p": {
@@ -43,6 +43,7 @@ def cardapio():
         )
     print(faz_linha(50))
 
+
 # Função que vai organizar o print do cardapio
 def organiza_preco_tamanho(tamanho, preco_cp, preco_ac):
     print(
@@ -51,12 +52,13 @@ def organiza_preco_tamanho(tamanho, preco_cp, preco_ac):
         faz_linha(6)
     )
 
+
 # Função simple que auxilia na criação da interface do usuario
-# é responsavel pela a criação das linhas
 def faz_linha(num):
     return "-"*num
 
-# Pega o input com a escolha do sabor
+
+# Função para pegar input com a escola do sabor
 def escolha_sabor():
     while True:
         try:
@@ -70,7 +72,8 @@ def escolha_sabor():
             print("Sabor invalido, tente novamente\n")
             continue
 
-# Pega o input com a escolha do tamanho
+
+# Função para pegar input com a escola do tamanho
 def escolha_tamanho():
     while True:
         try:
@@ -83,6 +86,7 @@ def escolha_tamanho():
         except ValueError:
             print("Tamanho invalido, tente novamente\n")
             continue
+
 
 # Função que inicia o programa
 def inicio():

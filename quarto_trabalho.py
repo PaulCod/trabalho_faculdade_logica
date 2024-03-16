@@ -1,3 +1,5 @@
+
+# Variaveis globais
 # Dicionário contendo as opções do menu principal
 opcoes_principal = {
     "1": {
@@ -33,13 +35,45 @@ opcoes_consulta = {
 # Lista para armazenar os livros cadastrados
 lista_livro = []
 
+
+
+
+# Funções utilitarias
+# Função simple que auxilia na criação da interface de usuario criando as linhas
+def faz_linha(num_caractere, caractere):
+    return str(caractere) * num_caractere
+
+
+# Função que pega o input do usuario no cadastro do livro
+def dados_input(texto, mensagemErro):
+    while True:
+        try:
+            dado = input(texto)
+            if len(dado) < 1:
+                raise ValueError("dado vazio")
+            return dado.strip().title()
+        except ValueError:
+            print(f"{mensagemErro} precisa ter ao menos 1 caractere")
+
+
+# Função para acrecentar no id a cada novo cadastro
+def acrecenta_id(id_global):
+    return id_global + 1
+
+
+# Função que cria o cabeçalho de todos os menus, como o MENU PRINCIPAL, MENU DE CONSULTA e MENU REMOVER LIVRO
+def cria_header(mensagem, num_caractere):
+    print(faz_linha(num_caractere, "-") + mensagem + faz_linha(num_caractere, "-"))
+
+
 # Função que mostra as opções disponíveis para o usuário
 def mostra_opcoes(opcoes):
     for i in opcoes:
         print(f"{i} - {opcoes[i]['menssagem']}")
 
-# Função que o input do usuario tanto no MENU PRINCIPAL quanto no MENU DE CONSULTA
-def pega_opcoes(opcoes, menssagem, num_caractere):
+
+# Função que pega input do usuario tanto no MENU PRINCIPAL quanto no MENU DE CONSULTA
+def pega_opcoes(opcoes, mensagem, num_caractere):
     while True:
         try:
             mostra_opcoes(opcoes)
@@ -51,36 +85,23 @@ def pega_opcoes(opcoes, menssagem, num_caractere):
         except ValueError:
             print(faz_linha(45, "-"))
             print("Opção Invalida, Tente Novamente")
-            cria_header(menssagem, num_caractere)
+            cria_header(mensagem, num_caractere)
 
-# Função que cria o cabeçalho de todos os menus, como o MENU PRINCIPAL, MENU DE CONSULTA e MENU REMOVER LIVRO
-def cria_header(menssagem, num_caractere):
-    print(faz_linha(num_caractere, "-") + menssagem + faz_linha(num_caractere, "-"))
 
-# Função simple que auxilia na criação da interface de usuario criando as linhas
-def faz_linha(num_caractere, caractere):
-    return str(caractere) * num_caractere
 
+
+# Funções relacionadas ao cadastro de novo livro
 # Função para cadastrar livros
-def cadastra_livro(id):
+def cadastra_livro(id_global):
     while True:
         cria_header("MENU DE CADASTRO DE LIVRO", 14)
-        print(f"ID do livro {id}")
-        autor = input("Digite o nome do autor: ").strip().title()
-        if autor == "":
-            print("Autor não pode estar vazio!!")
-            continue
-        nome_livro = input("Digite o nome do livro: ").strip().title()
-        if nome_livro == "":
-            print("Nome do Livro não pode estar vazio!!")
-            continue
-        editora = input("Digite o nome da editora: ").strip().title()
-        if editora == "":
-            print("Editora não pode estar vazio!!!")
-            continue
+        print(f"O id do livro {id_global}")
+        autor = dados_input("Digite o nome do autor: ", "Autor")
+        nome_livro = dados_input("Digite o nome do livro: ", "Nome do livro")
+        editora = dados_input("Digite o nome da editora: ", "Editora")
 
         lista_livro.append({
-            "id": id,
+            "id": id_global,
             "autor": autor,
             "nome_livro": nome_livro,
             "editora": editora
@@ -90,41 +111,10 @@ def cadastra_livro(id):
         print("Livro cadastrado com sucesso!!!")
         break
 
-# Função para consultar livros por ID
-def consulta_por_id(texto):
-    while True:
-        try:
-            id = int(input(texto))
-            for livro in lista_livro:
-                if livro["id"] == id:
-                    return livro
 
-            return None
 
-        except ValueError:
-            print("O ID precisa ser um numero inteiro")
 
-# Função para consultar livros por autor
-def consulta_por_autor():
-    livros_autor = []
-    autor = input("Digite o nome do autor: ").strip().title()
-    for livro in lista_livro:
-        if livro["autor"] == autor:
-            livros_autor.append(livro)
-
-    if livros_autor == []:
-        return None
-
-    return livros_autor
-
-# Função para exibir os dados de um livro
-def mostrar_livro(livro):
-    print(faz_linha(25, "-"))
-    print(f"ID: {livro['id']}")
-    print(f"Autor: {livro['autor']}")
-    print(f"Livro: {livro['nome_livro']}")
-    print(f"Editora: {livro['editora']}")
-
+# Funções relacionadas a consulta
 # Função para exibir o MENU DE CONSULTA para o usuario
 def consulta_livro():
     while True:
@@ -167,6 +157,48 @@ def consulta_livro():
             print("Retornando...")
             break
 
+
+# Função para consultar livros por ID
+def consulta_por_id(texto):
+    while True:
+        try:
+            id = int(input(texto))
+            for livro in lista_livro:
+                if livro["id"] == id:
+                    return livro
+
+            return None
+
+        except ValueError:
+            print("O ID precisa ser um numero inteiro")
+
+
+# Função para consultar livros por autor
+def consulta_por_autor():
+    livros_autor = []
+    autor = input("Digite o nome do autor: ").strip().title()
+    for livro in lista_livro:
+        if livro["autor"] == autor:
+            livros_autor.append(livro)
+
+    if livros_autor == []:
+        return None
+
+    return livros_autor
+
+
+# Função para exibir os dados de um livro
+def mostrar_livro(livro):
+    print(faz_linha(25, "-"))
+    print(f"ID: {livro['id']}")
+    print(f"Autor: {livro['autor']}")
+    print(f"Livro: {livro['nome_livro']}")
+    print(f"Editora: {livro['editora']}")
+
+
+
+
+# Funções relacionadas a remoção de livros
 # Função para remover livro de acordo com o id
 def remover_livro():
     try:
@@ -183,10 +215,9 @@ def remover_livro():
     except ValueError:
         print("O id deve ser um inteiro!!!")
 
-# Função para acrecentar no id a cada novo cadastro
-def acrecenta_id(id_global):
-    return id_global + 1
 
+
+# Função Principal
 # Função que inicia o programa
 def inicio():
     id_global = 0
@@ -209,3 +240,6 @@ def inicio():
 
 
 inicio()
+
+
+

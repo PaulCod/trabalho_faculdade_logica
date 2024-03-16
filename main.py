@@ -1,7 +1,6 @@
 # Primeiro Exercicio
 
-# Função que vai mostrar para o usuario a menssagem
-# de boas vindas
+# Função para mostar mensagem de boas vindas
 def print_boasvindas(nome, ru):
     print_linha()
     print(f"Bem vindo a loja do {nome} RU:{ru}")
@@ -11,8 +10,7 @@ def print_boasvindas(nome, ru):
 def print_linha():
     print("-"*60)
 
-# Vai validar se o dado de entrada é valido ou não
-# e ver se ele é um int ou um float
+# Função para verificar os dados do input
 def validar_numero(menssagem, tipo):
     while True:
         entrada = input(menssagem)
@@ -29,10 +27,9 @@ def validar_numero(menssagem, tipo):
             print("Digite um numero valido")
 
 
-print_boasvindas("Paulo Junior Lima dos Santos", 4541788)
-
 # Função que inicia o programa
 def inicio():
+    print_boasvindas("Paulo Junior Lima dos Santos", 4541788)
     # vai pegar o valor do produto
     valor_produto = validar_numero("Digite o valor unitario do produto: R$ ", "float")
     # vai pegar a quantidade do produto
@@ -52,7 +49,7 @@ def inicio():
     elif total >= 6000 and total < 10000:
         total_com_desconto = total - (total * 0.07)
         textoDesconto = "(7% de desconto)"
-    else:
+    elif total >= 10000:
         total_com_desconto = total - (total * 0.11)
         textoDesconto = "(11% de desconto)"
 
