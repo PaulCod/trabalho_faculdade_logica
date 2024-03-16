@@ -37,7 +37,6 @@ def mostra_servico(servicos):
 
 
 def escolha_servico():
-
     while True:
         try:
             mostra_servico(todos_servicos)
@@ -57,14 +56,13 @@ def num_pagina():
             num_pagina = int(input("Digite o numero de paginas: "))
             desconto = 0
 
-
             if num_pagina >= 20 and num_pagina < 200:
                 desconto = 0.15
             elif num_pagina >= 200 and num_pagina < 2000:
                 desconto = 0.2
             elif num_pagina >= 2000 and num_pagina < 20000:
                 desconto = 0.25
-            elif num_pagina > 20000:
+            elif num_pagina >= 20000:
                 raise Exception("Excedeu numero de paginas")
 
             return num_pagina, desconto

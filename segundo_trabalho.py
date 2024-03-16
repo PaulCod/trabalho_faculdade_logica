@@ -51,12 +51,12 @@ def organiza_preco_tamanho(tamanho, preco_cp, preco_ac):
         faz_linha(6)
     )
 
-
+# Função simple que auxilia na criação da interface do usuario
+# é responsavel pela a criação das linhas
 def faz_linha(num):
     return "-"*num
 
 # Pega o input com a escolha do sabor
-
 def escolha_sabor():
     while True:
         try:
@@ -88,10 +88,14 @@ def escolha_tamanho():
 def inicio():
     acumulador = 0
     print("Bem vindo a loja de Gelados do Paulo Junior Lima dos Santos")
+    # Chama a função que vai mostrar o cardapio
     cardapio()
     while True:
+        # Recebe a escolha do sabor do usuario
         sabor = escolha_sabor()
+        # Recebe a escolha do sabor do usuario
         tamanho = escolha_tamanho()
+        # Recebe o dado de preço da escolha do usuario
         preco = dadosProdutos[tamanho][sabor]["preco"]
 
         acumulador += preco

@@ -21,7 +21,6 @@ def validar_numero(menssagem, tipo):
                 numero = float(entrada)
             elif tipo == "int":
                 numero = int(entrada)
-                return numero
             else:
                 raise ValueError("Tipo invalido")
 
