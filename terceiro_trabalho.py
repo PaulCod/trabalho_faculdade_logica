@@ -109,10 +109,10 @@ def inicio():
             paginas = num_pagina()
             extra = servico_extra()
 
-            total_com_desconto = paginas * servico["preco"]
-            total_com_extra = total_com_desconto + extra["preco"]
+            total_com_desconto = (paginas * servico["preco"]) + extra["preco"]
 
-            print(f"Total com desconto: {total_com_extra:.2f}")
+            print(f"Preço do servico: {servico['preco']} + Paginas com desconto: {paginas} + Servico extra: {extra['preco']}")
+            print(f"Total: {total_com_desconto}")
 
             break
         except ValueError:
