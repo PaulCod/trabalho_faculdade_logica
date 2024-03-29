@@ -58,3 +58,4 @@ def inicio():
     print(f"O valor com desconto foi R${total_com_desconto} {textoDesconto}")
 
 inicio()
+

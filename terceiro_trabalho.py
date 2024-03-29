@@ -1,3 +1,5 @@
+# Variaveis globais
+# Dicionário contendo as opções do menu principal
 todos_servicos = {
     "DIG": {
         "tipo": "Digitalização",
@@ -31,12 +33,13 @@ servicos_extra = {
     },
 }
 
-
+# Função que itera sobre as bibliotecas com informações de serviços
 def mostra_servico(servicos):
     for i in servicos:
         print(f"{i} - {servicos[i]['tipo']}")
 
 
+# Função que pega a escolha do servico do usuario
 def escolha_servico():
     while True:
         try:
@@ -52,6 +55,7 @@ def escolha_servico():
             continue
 
 
+# Função que ira pegar o numero de paginas e ira retornar o numero de paginas com o descoto
 def num_pagina():
     while True:
         try:
@@ -74,6 +78,8 @@ def num_pagina():
             print("Não aceitamos mais do que 20000 paginas. Tente novamente")
 
 
+
+# Função que pergunta ao usuario se ele deseja serviço extra
 def servico_extra():
     while True:
         try:
@@ -89,10 +95,11 @@ def servico_extra():
             print("Opção invalida, Tente novamente")
 
 
+# Função simple que auxilia na criação da interface de usuario criando as linhas
 def faz_linha(num):
     print('-'*num)
 
-
+# Função que inicia o programa
 def inicio():
 
     print("Bem vindo a papelaria do Paulo Junior Lima dos Santos")
@@ -119,3 +126,5 @@ def inicio():
 
 
 inicio()
+
+

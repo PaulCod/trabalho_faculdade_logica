@@ -116,3 +116,5 @@ def inicio():
     print(f"O total do seu pedido deu R${acumulador}")
 
 inicio()
+
+
