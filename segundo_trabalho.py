@@ -91,7 +91,7 @@ def escolha_tamanho():
 # Função que inicia o programa
 def inicio():
     acumulador = 0
-    print("Bem vindo a loja de Gelados do Paulo Junior Lima dos Santos")
+    print("Bem vindo a loja de Gelados do Paulo Junior Lima dos Santos  RU: 4541788")
     # Chama a função que vai mostrar o cardapio
     cardapio()
     while True:

@@ -24,7 +24,7 @@ servicos_extra = {
         "preco": 15.00
     },
     "2": {
-        "tipo": "Encardenação campa dura",
+        "tipo": "Encardenação capa dura",
         "preco": 40.00
     },
     "0": {
@@ -60,18 +60,17 @@ def num_pagina():
     while True:
         try:
             num_pagina = int(input("Digite o numero de paginas: "))
-            desconto = 0
 
             if num_pagina >= 20 and num_pagina < 200:
-                desconto = 0.15
+                num_pagina_desconto = num_pagina - (num_pagina * 0.15)
             elif num_pagina >= 200 and num_pagina < 2000:
-                desconto = 0.2
+                num_pagina_desconto = num_pagina - (num_pagina * 0.2)
             elif num_pagina >= 2000 and num_pagina < 20000:
-                desconto = 0.25
+                num_pagina_desconto = num_pagina - (num_pagina * 0.25)
             elif num_pagina >= 20000:
                 raise Exception("Excedeu numero de paginas")
 
-            return num_pagina, desconto
+            return num_pagina_desconto
         except ValueError:
             print("Numero de paginas invalido. Tente novamente")
         except Exception:
@@ -102,23 +101,18 @@ def faz_linha(num):
 # Função que inicia o programa
 def inicio():
 
-    print("Bem vindo a papelaria do Paulo Junior Lima dos Santos")
+    print("Bem vindo a papelaria do Paulo Junior Lima dos Santos  RU:4541788")
 
     while True:
         try:
             servico = escolha_servico()
-            paginas, porcentagem_desconto = num_pagina()
+            paginas = num_pagina()
             extra = servico_extra()
-            print(extra)
 
-            total_sem_extra = servico["preco"] * paginas
-            desconto = total_sem_extra * porcentagem_desconto
-            total_com_desconto = total_sem_extra - desconto
-            total_com_extra = total_sem_extra + extra["preco"]
-            total_com_desconto += extra["preco"]
+            total_com_desconto = paginas * servico["preco"]
+            total_com_extra = total_com_desconto + extra["preco"]
 
-            print(f"Total: {total_com_extra:.2f}")
-            print(f"Total com desconto: {total_com_desconto:.2f}")
+            print(f"Total com desconto: {total_com_extra:.2f}")
 
             break
         except ValueError:

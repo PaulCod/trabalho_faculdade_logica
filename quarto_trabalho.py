@@ -221,7 +221,7 @@ def remover_livro():
 # Função que inicia o programa
 def inicio():
     id_global = 0
-    print("Bem vindo ao controle de livros do Paulo Junior Lima dos Santos")
+    print("Bem vindo ao controle de livros do Paulo Junior Lima dos Santos  RU: 4541788")
 
     while True:
         cria_header("MENU PRINCIPAL", 20)
